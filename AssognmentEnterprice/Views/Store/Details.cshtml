@@ -1,0 +1,18 @@
+﻿@model AssognmentEnterprice.Models.Genre
+
+@{
+    ViewBag.Title = Model.Name+ "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name  Books</h2>
+
+
+@foreach(var a in Model.Books)
+{
+    <article>
+        <h3>@a.Title</h3>
+        <img src="@a.BookArtUrl" alt="@a.Title"/>
+        <p>@String.Format("{0:c}",a.Price)</p>
+    </article>
+}
