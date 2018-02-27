@@ -19,13 +19,13 @@
     }
 </div>
 
-<table class="table">
+<table class="table sortable">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.GenreId)
+            @Html.DisplayNameFor(model => model.Genre.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AuthorId)
+            @Html.DisplayNameFor(model => model.Author.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -42,10 +42,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.GenreId)
+            @Html.DisplayFor(modelItem => item.Genre.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AuthorId)
+            @Html.DisplayFor(modelItem => item.Author.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -54,8 +54,8 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            <img src="@item.BookArtUrl" alt="@item.Title"/>
-            @Html.DisplayFor(modelItem => item.BookArtUrl)
+            <img src="@item.BookArtUrl" alt="@item.Title" width="80"/>
+            
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.BookId }) |

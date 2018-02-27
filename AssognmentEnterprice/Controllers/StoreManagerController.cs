@@ -17,7 +17,7 @@ namespace AssognmentEnterprice.Controllers
         // GET: StoreManager
         public ActionResult Index()
         {
-            var book = db.Books.Include(a => a.AuthorId).Include(a => a.GenreId);
+            var book = db.Books.Include(a => a.Author).Include(a => a.Genre);
             return View(db.Books.ToList());
         }
 
@@ -26,12 +26,15 @@ namespace AssognmentEnterprice.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Book book = db.Books.Find(id);
             if (book == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(book);
         }
@@ -51,6 +54,11 @@ namespace AssognmentEnterprice.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(Request.Files.Count>0){
+                    var file = Request.Files[0];
+
+
+                }
                 db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -17,7 +17,7 @@ namespace AssognmentEnterprice.Controllers
         // GET: Store
         public ActionResult Index()
         {
-            return View(db.Genres.OrderBy(a=>a.Name).ToList());
+            return View(db.Genres.OrderBy(g=>g.Name).ToList());
         }
 
         // GET: Store/Details/5
@@ -25,12 +25,14 @@ namespace AssognmentEnterprice.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Genre genre = db.Genres.Find(id);
             if (genre == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(genre);
         }

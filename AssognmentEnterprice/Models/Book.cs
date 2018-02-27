@@ -27,6 +27,7 @@ namespace AssognmentEnterprice.Models
         public string Title { get; set; }
 
         [Column(TypeName = "numeric")]
+        [DisplayFormat(DataFormatString= "{0:c}")]
         public decimal Price { get; set; }
 
         [StringLength(1024)]
@@ -38,5 +39,8 @@ namespace AssognmentEnterprice.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        public virtual Author Author { get; set; }
+        public virtual Genre Genre { get; set; }
     }
 }
